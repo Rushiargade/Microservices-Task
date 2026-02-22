@@ -1,68 +1,99 @@
-# Microservices-Task
+# Microservices Docker Assignment
 
-## Overview
-This document provides details on testing various services after running the `docker-compose` file. These services include User, Product, Order, and Gateway Services. Each service has its own endpoints for testing purposes.
+## Introduction
 
----
+This project is about containerizing a simple microservices-based Node.js application using Docker and Docker Compose.
 
-## Services and Endpoints
+In this assignment, I have containerized the following services:
 
-### **User Service**
-- **Base URL:** `http://localhost:3000`
-- **Endpoints:**
-  - **List Users:**  
-    ```
-    curl http://localhost:3000/users
-    ```
-    Or open in your browser: [http://localhost:3000/users](http://localhost:3000/users)
+- User Service (Port 3000)
+- Product Service (Port 3001)
+- Order Service (Port 3002)
+- Gateway Service (Port 3003)
+
+Each service runs in its own Docker container, and Docker Compose is used to run all services together.
 
 ---
 
-### **Product Service**
-- **Base URL:** `http://localhost:3001`
-- **Endpoints:**
-  - **List Products:**  
-    ```
-    curl http://localhost:3001/products
-    ```
-    Or open in your browser: [http://localhost:3001/products](http://localhost:3001/products)
+## Project Structure
+
+submission/
+├── user-service/
+├── product-service/
+├── order-service/
+├── gateway-service/
+├── docker-compose.yml
+└── README.md
+
+Each service contains:
+- app.js
+- package.json
+- Dockerfile
 
 ---
 
-### **Order Service**
-- **Base URL:** `http://localhost:3002`
-- **Endpoints:**
-  - **List Orders:**  
-    ```
-    curl http://localhost:3002/orders
-    ```
-    Or open in your browser: [http://localhost:3002/orders](http://localhost:3002/orders)
+## How to Run the Project
+
+### Step 1: Clone the repository
+
+git clone <your-repo-link>
+
+cd Microservices-Task/submission
+
+### Step 2: Start all services using Docker Compose
+
+docker compose up --build
+
+This command builds the Docker images and starts all containers.
 
 ---
 
-### **Gateway Service**
-- **Base URL:** `http://localhost:3003/api`
-- **Endpoints:**
-  - **Users:**  
-    ```
-    curl http://localhost:3003/api/users
-    ```
-  - **Products:**  
-    ```
-    curl http://localhost:3003/api/products
-    ```
-  - **Orders:**  
-    ```
-    curl http://localhost:3003/api/orders
-    ```
+## Service Endpoints
+
+After running Docker Compose, the services can be accessed using the following URLs:
+
+### User Service
+http://localhost:3000/users
+
+### Product Service
+http://localhost:3001/products
+
+### Order Service
+http://localhost:3002/orders
+
+### Gateway Service
+http://localhost:3003/api/users  
+http://localhost:3003/api/products  
+http://localhost:3003/api/orders  
 
 ---
 
-## Instructions
-1. Start all services using the `docker-compose` file:
-   ```
-   docker-compose up
-   ```
-2. Once the services are running, use the above endpoints to verify the functionality.
+## What I Learned
 
-Happy testing!
+- How to create a Dockerfile for a Node.js application
+- How to use Docker Compose to run multiple services
+- How containers communicate using a shared network
+- How to expose container ports to localhost
+
+---
+
+## Troubleshooting
+
+If Docker is not running:
+Make sure Docker Desktop is started.
+
+If ports are already in use:
+Stop the running process or use:
+docker compose down
+
+To rebuild containers:
+docker compose up --build
+
+---
+
+## Technologies Used
+
+- Node.js
+- Express
+- Docker
+- Docker Compose
